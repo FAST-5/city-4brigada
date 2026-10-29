@@ -146,6 +146,44 @@ td strong { font-size:12px; }
 .owner-action-note { color:var(--muted);font-size:10px;line-height:1.5;margin-top:10px; }
 @media(max-width:520px){.login-card{padding:21px}.login-card h1{font-size:23px}}
 
+/* Photo-led refresh — preserves the existing API and login behaviour. */
+.page-head { align-items:center; }
+#page-home .page-head { position:relative; isolation:isolate; overflow:hidden; padding:clamp(24px,3vw,38px); border-radius:22px; color:#fff; background:linear-gradient(108deg,rgba(22,43,31,.96) 0%,rgba(30,55,39,.84) 48%,rgba(32,50,39,.25) 100%),url('https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&q=85&w=1500') center 43%/cover; box-shadow:0 18px 42px rgba(20,38,27,.13); }
+#page-home .page-head .eyebrow { color:#e2d39b; }
+#page-home .page-head h1 { color:#fff; max-width:680px; font-size:clamp(32px,4vw,48px); }
+#page-home .page-head .lead { color:rgba(255,255,255,.82); }
+#page-home .page-head .btn { background:#d6bd75; color:#24362b; box-shadow:none; }
+.quick { position:relative; isolation:isolate; overflow:hidden; color:#fff; border-color:rgba(255,255,255,.14); background-size:cover; background-position:center; min-height:150px; transition:transform .15s,border-color .15s,box-shadow .15s; }
+.quick::before { content:""; position:absolute; inset:0; z-index:-1; background:linear-gradient(0deg,rgba(13,29,20,.94) 0%,rgba(20,38,27,.65) 55%,rgba(20,38,27,.08) 100%); }
+.quick:nth-child(1) { background-image:url('https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&q=85&w=850'); }
+.quick:nth-child(2) { background-image:url('https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&q=85&w=850'); }
+.quick:nth-child(3) { background-image:url('https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&q=85&w=850'); }
+.quick:nth-child(4) { background-image:url('https://images.unsplash.com/photo-1521737711867-e3b97375f902?auto=format&fit=crop&q=85&w=850'); }
+.quick strong { color:#fff; position:relative; }
+.quick span { color:rgba(255,255,255,.83); position:relative; }
+.quick-icon { background:rgba(249,250,243,.16); border:1px solid rgba(255,255,255,.25); color:#f2e1a1; backdrop-filter:blur(8px); }
+.quick:hover { color:#fff; border-color:#c6b575; background-color:#344b3c; transform:translateY(-2px); box-shadow:0 8px 18px rgba(33,53,38,.1); }
+.ai-feature { display:grid; grid-template-columns:minmax(0,1.3fr) minmax(190px,.7fr); gap:0; overflow:hidden; margin:0 0 18px; min-height:176px; background:linear-gradient(120deg,#25392d,#354d3b 65%,#546747); color:#f6f5e9; border:1px solid rgba(255,255,255,.12); border-radius:17px; box-shadow:0 8px 24px rgba(28,43,33,.07); }
+.ai-copy { padding:24px; }
+.ai-kicker { color:#d6c17e; font-size:9px; font-weight:800; letter-spacing:.16em; text-transform:uppercase; }
+.ai-copy h2 { color:#fff; font-size:20px; margin-top:10px; }
+.ai-copy p { color:rgba(255,255,255,.78); max-width:520px; font-size:12px; line-height:1.7; }
+.ai-status { display:inline-flex; gap:7px; align-items:center; padding:7px 10px; border:1px solid rgba(255,255,255,.2); border-radius:999px; background:rgba(255,255,255,.07); font-size:10px; color:#ede3bd; }
+.ai-visual { min-height:176px; background:linear-gradient(90deg,#304735 0%,rgba(48,71,53,.1) 55%),url('https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&q=85&w=1000') center/cover; position:relative; }
+.ai-visual::after { content:"✦  AI"; position:absolute; bottom:17px; right:18px; padding:10px 15px; background:rgba(15,30,20,.72); border:1px solid rgba(232,214,152,.55); border-radius:12px; color:#f1df9e; font-size:15px; font-weight:800; backdrop-filter:blur(8px); }
+.login-overlay { display:grid; grid-template-columns:minmax(0,1fr) minmax(360px,480px); gap:clamp(28px,5vw,80px); justify-content:stretch; padding:clamp(22px,5vw,76px); background:radial-gradient(circle at 12% 22%,rgba(117,139,93,.14),transparent 27%),var(--site-background); }
+.login-overlay::before { content:"ВОЕННЫЙ\AКОНСПЕКТ\A\AЕдиное пространство\Aдля подготовки учебных документов.\A\AКонспекты  ·  Учебники  ·  Word"; white-space:pre-line; display:flex; align-items:flex-end; min-height:min(63vh,570px); padding:clamp(28px,4vw,58px); border-radius:28px; background:linear-gradient(120deg,rgba(17,34,24,.96) 0%,rgba(28,51,36,.82) 48%,rgba(22,40,28,.35) 100%),url('https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&q=85&w=1500') center/cover; color:#f4f4eb; font-size:clamp(26px,4vw,58px); font-weight:800; letter-spacing:-.055em; line-height:1.16; box-shadow:0 26px 70px rgba(24,40,29,.16); }
+.login-card { position:relative; z-index:1; width:100%; max-width:480px; padding:clamp(25px,3vw,40px); border-radius:23px; box-shadow:0 22px 70px rgba(28,43,33,.09); }
+.login-card h1 { font-size:clamp(27px,3vw,34px); }
+.login-brand { margin-bottom:22px; }
+.login-photo-strip { display:grid; grid-template-columns:1.2fr 1fr 1fr; gap:8px; margin:0 0 22px; }
+.login-photo { height:70px; border-radius:11px; background-size:cover; background-position:center; }
+.login-photo:nth-child(1) { background-image:url('https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&q=85&w=550'); }
+.login-photo:nth-child(2) { background-image:url('https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&q=85&w=450'); }
+.login-photo:nth-child(3) { background-image:url('https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&q=85&w=450'); }
+@media(max-width:850px){.login-overlay{display:flex;justify-content:center;padding:16px}.login-overlay::before{display:none}.login-card{margin:auto}.ai-feature{grid-template-columns:1fr}.ai-visual{min-height:120px}}
+@media(max-width:680px){#page-home .page-head{padding:24px}.ai-copy{padding:20px}}
+
 </style>
 </head>
 <body>
@@ -174,6 +212,7 @@ td strong { font-size:12px; }
         <div class="card stat"><div class="stat-top"><span>В очереди</span><span class="stat-icon">◷</span></div><div class="stat-value">0</div><div class="stat-note">Нет активных задач</div></div>
         <div class="card stat"><div class="stat-top"><span>Статус сервиса</span><span class="stat-icon">✓</span></div><div class="stat-value" style="font-size:20px;letter-spacing:-.02em">Макет</div><div class="stat-note">Не подключён к серверу</div></div>
       </div>
+      <div class="card ai-feature"><div class="ai-copy"><div class="ai-kicker">УЧЕБНЫЙ ПОМОЩНИК</div><h2>Подготовка конспектов в одном месте</h2><p>Заполняйте параметры занятия, работайте с подключёнными учебными источниками и получайте документ Word через серверный генератор.</p><span class="ai-status">✦ Генератор документов</span></div><div class="ai-visual" role="img" aria-label="Рабочее место и цифровые инструменты"></div></div>
       <div class="main-grid">
         <div class="card panel"><div class="panel-head"><div><h2>Быстрые действия</h2><div class="panel-sub">Начните с нужного раздела</div></div></div><div class="quick-grid">
           <button class="quick" data-go="create"><span class="quick-icon">＋</span><strong>Создать конспект</strong><span>Выбрать дисциплину, тему и параметры занятия.</span></button>
@@ -233,6 +272,7 @@ td strong { font-size:12px; }
 <div class="login-overlay" id="loginOverlay">
   <div class="login-card">
     <div class="login-brand"><div class="login-brand-mark">⬡</div><div><div class="brand-title">ВОЕННЫЙ КОНСПЕКТ</div><div class="brand-sub" style="color:var(--muted)">Защищённое учебное пространство</div></div></div>
+    <div class="login-photo-strip" aria-label="Фотографии учебного пространства"><div class="login-photo"></div><div class="login-photo"></div><div class="login-photo"></div></div>
     <div class="eyebrow">ВХОД ЧЕРЕЗ TELEGRAM</div>
     <h1>Добро пожаловать</h1>
     <p>Откройте своего Telegram-бота «Военный Конспект» и отправьте команду <strong>/sitecode</strong>. Введите ниже свой Telegram ID и одноразовый код из ответа бота.</p>
