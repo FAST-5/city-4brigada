@@ -698,6 +698,18 @@ th, td { border-color: rgba(128, 163, 231, .14); }
 }
 
 </style>
+
+<style>
+.login-tabs{display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:4px;margin:18px 0 15px;border:1px solid rgba(120,170,255,.22);border-radius:12px;background:rgba(5,12,29,.72)}
+.login-tabs button{min-height:39px;border:0;border-radius:8px;background:transparent;color:#aab9d8;font-size:12px;font-weight:800;cursor:pointer}
+.login-tabs button.active{color:#071629;background:linear-gradient(105deg,#65e1ff,#a99cff);box-shadow:0 5px 18px rgba(85,173,255,.18)}
+#emailAuthForm .field,#emailVerifyForm .field{margin:13px 0}
+#emailAuthForm .btn,#emailVerifyForm .btn{width:100%;min-height:45px}
+#emailVerifyForm .btn.secondary{color:#dfe9ff;background:rgba(32,48,88,.76);border:1px solid rgba(126,167,255,.25)}
+.login-card .owner-action-note{color:#9eafd0!important;font-size:11px;line-height:1.6;margin-top:16px}
+.login-error{white-space:normal;line-height:1.55}
+</style>
+
 </head>
 <body>
 <div id="app">
@@ -774,7 +786,7 @@ th, td { border-color: rgba(128, 163, 231, .14); }
     <section class="section" id="page-owner">
       <div class="page-head"><div><div class="eyebrow">ТОЛЬКО ДЛЯ ВЛАДЕЛЬЦА</div><h1>Кабинет владельца</h1><p class="lead">Макет статистики и управления. В настоящем приложении доступ к этому разделу должен проверяться сервером — скрытия кнопки на странице недостаточно.</p></div><span class="badge warn">Демо-данные</span></div>
       <div class="stats"><div class="card stat"><div class="stat-top"><span>Пользователи</span><span class="stat-icon">♙</span></div><div class="stat-value" id="ownerUsersCount">—</div><div class="stat-note">Пользователи с доступом</div></div><div class="card stat"><div class="stat-top"><span>Создано документов</span><span class="stat-icon">▤</span></div><div class="stat-value" id="ownerDocs">—</div><div class="stat-note">По данным сервера</div></div><div class="card stat"><div class="stat-top"><span>Ошибки</span><span class="stat-icon">!</span></div><div class="stat-value" id="ownerErrorsCount">—</div><div class="stat-note">Зафиксировано ошибок</div></div><div class="card stat"><div class="stat-top"><span>Доступность</span><span class="stat-icon">✓</span></div><div class="stat-value" style="font-size:20px">Макет</div><div class="stat-note">Без соединения с сервером</div></div></div>
-      <div class="main-grid"><div class="card panel"><div class="panel-head"><div><h2>Управление доступом</h2><div class="panel-sub">Пример списка пользователей</div></div></div><div class="table-wrap"><table><thead><tr><th>Пользователь</th><th>ID</th><th>Роль</th><th>Доступ</th></tr></thead><tbody id="ownerUsersRows"><tr><td colspan="4">Список загрузится после входа владельца.</td></tr></tbody></table></div><div class="field" style="margin-top:18px"><label for="ownerId">Telegram ID</label><input id="ownerId" placeholder="Введите ID для демонстрации"></div><div class="actions" style="justify-content:flex-start"><button class="btn small" id="grantBtn">Выдать доступ</button><button class="btn danger small" id="revokeBtn">Отозвать доступ</button></div><div class="hint" style="margin-top:10px">Кнопки не меняют реальные разрешения — подключение к серверу не настроено.</div></div>
+      <div class="main-grid"><div class="card panel"><div class="panel-head"><div><h2>Управление доступом</h2><div class="panel-sub">Пример списка пользователей</div></div></div><div class="table-wrap"><table><thead><tr><th>Пользователь</th><th>Gmail / ID</th><th>Роль</th><th>Доступ</th><th>Действие</th></tr></thead><tbody id="ownerUsersRows"><tr><td colspan="5">Список загрузится после входа владельца.</td></tr></tbody></table></div><div class="field" style="margin-top:18px"><label for="ownerId">Telegram ID (старый способ управления)</label><input id="ownerId" placeholder="Введите ID для демонстрации"></div><div class="actions" style="justify-content:flex-start"><button class="btn small" id="grantBtn">Выдать доступ</button><button class="btn danger small" id="revokeBtn">Отозвать доступ</button></div><div class="hint" style="margin-top:10px">Аккаунты Gmail блокируются и разблокируются кнопками в таблице. Поле ниже оставлено для старых Telegram-аккаунтов.</div></div>
       <div class="card panel"><h2>Последние ошибки</h2><div class="panel-sub">Журнал ошибок сервера</div><div id="ownerErrorsList" class="activity" style="margin-top:10px"><div class="empty">Журнал загрузится после входа.</div></div><hr style="border:0;border-top:1px solid var(--line);margin:22px 0"><h2>Сообщения пользователей</h2><div class="panel-sub">Обратная связь с сайта</div><div id="ownerReportsList" class="activity" style="margin-top:10px"><div class="empty">Сообщения загрузятся после входа.</div></div></div></div>
     </section>
     <div class="footer-note">Военный Конспект · доступ и документы обслуживаются сервером · берегите данные входа</div>
@@ -784,18 +796,26 @@ th, td { border-color: rgba(128, 163, 231, .14); }
 </div>
 <div class="login-overlay" id="loginOverlay">
   <div class="login-card">
-    <div class="login-brand"><div class="login-brand-mark">⬡</div><div><div class="brand-title">ВОЕННЫЙ КОНСПЕКТ</div><div class="brand-sub" style="color:var(--muted)">Защищённое учебное пространство</div></div></div>
-    <div class="login-photo-strip" aria-label="Фотографии учебного пространства"><div class="login-photo"></div><div class="login-photo"></div><div class="login-photo"></div></div>
-    <div class="eyebrow">ВХОД ЧЕРЕЗ TELEGRAM</div>
+    <div class="login-brand"><div class="login-brand-mark">✦</div><div><div class="brand-title">ВОЕННЫЙ КОНСПЕКТ</div><div class="brand-sub" style="color:var(--muted)">Защищённое учебное пространство</div></div></div>
+    <div class="login-photo-strip" aria-label="Цифровое учебное пространство"><div class="login-photo"></div><div class="login-photo"></div><div class="login-photo"></div></div>
+    <div class="eyebrow">ВХОД ПО GMAIL</div>
     <h1>Добро пожаловать</h1>
-    <p>Откройте своего Telegram-бота «Военный Конспект» и отправьте команду <strong>/sitecode</strong>. Введите ниже свой Telegram ID и одноразовый код из ответа бота.</p>
-    <form id="loginForm">
-      <div class="field"><label for="loginId">Telegram ID</label><input id="loginId" inputmode="numeric" pattern="[0-9]+" placeholder="Например, 123456789" required></div>
-      <div class="field"><label for="loginCode">Одноразовый код</label><input id="loginCode" inputmode="numeric" pattern="[0-9]{8}" minlength="8" maxlength="8" placeholder="8 цифр" required></div>
-      <button class="btn" type="submit" id="loginButton">Войти на сайт →</button>
+    <p>Создайте аккаунт с адресом Gmail и отдельным паролем для сайта. Для регистрации потребуется подтвердить адрес кодом из письма.</p>
+    <div class="login-tabs"><button type="button" class="active" id="emailLoginTab">Войти</button><button type="button" id="emailRegisterTab">Регистрация</button></div>
+    <form id="emailAuthForm">
+      <div class="field" id="emailNameField" style="display:none"><label for="emailDisplayName">Имя пользователя</label><input id="emailDisplayName" type="text" autocomplete="name" maxlength="80" placeholder="Как к вам обращаться"></div>
+      <div class="field"><label for="emailAddress">Gmail</label><input id="emailAddress" type="email" autocomplete="username" placeholder="name@gmail.com" required></div>
+      <div class="field"><label for="emailPassword">Пароль сайта</label><input id="emailPassword" type="password" autocomplete="current-password" minlength="8" maxlength="128" placeholder="Не менее 8 символов" required></div>
+      <div class="field" id="emailConfirmField" style="display:none"><label for="emailPasswordConfirm">Повторите пароль</label><input id="emailPasswordConfirm" type="password" autocomplete="new-password" minlength="8" maxlength="128" placeholder="Повторите пароль"></div>
+      <button class="btn" type="submit" id="emailAuthButton">Войти на сайт →</button>
+    </form>
+    <form id="emailVerifyForm" style="display:none">
+      <div class="field"><label for="emailVerifyCode">Код из письма Gmail</label><input id="emailVerifyCode" inputmode="numeric" pattern="[0-9]{6}" minlength="6" maxlength="6" autocomplete="one-time-code" placeholder="6 цифр" required></div>
+      <button class="btn" type="submit" id="emailVerifyButton">Подтвердить Gmail →</button>
+      <button class="btn secondary" type="button" id="emailResendButton" style="margin-top:9px">Отправить код повторно</button>
     </form>
     <p class="login-error" id="loginError" aria-live="polite"></p>
-    <p id="apiSetupHint" class="owner-action-note">Если вход недоступен, сайт ещё не настроен на адрес API. После включения адреса приложения в FadeHost в index.html нужно указать его в API_BASE_URL.</p>
+    <p class="owner-action-note" id="apiSetupHint">Регистрация открыта для всех. Пароль от Gmail вводить не нужно — придумайте отдельный пароль для сайта.</p>
   </div>
 </div>
 <div class="modal-back" id="modal"><div class="modal"><h2 id="modalTitle">Сообщение</h2><p id="modalText">—</p><div class="actions"><button class="btn" id="modalClose">Понятно</button></div></div></div>
@@ -855,7 +875,7 @@ async function apiFetch(path, options = {}) {
   if (response.status === 401) {
     sessionToken = "";
     sessionStorage.removeItem(TOKEN_KEY);
-    showLogin("Сессия завершилась. Получите новый код командой /sitecode.");
+    showLogin("Сессия завершилась. Войдите снова по Gmail.");
   }
   if (!response.ok) {
     let message = "Запрос не выполнен (" + response.status + ").";
@@ -872,36 +892,103 @@ function hideLogin() {
   document.getElementById("loginOverlay").style.display = "none";
   document.getElementById("loginError").textContent = "";
 }
-document.getElementById("loginForm").addEventListener("submit", async event => {
+let emailAuthMode = "login";
+let pendingVerificationEmail = "";
+function setEmailAuthMode(mode) {
+  emailAuthMode = mode;
+  const registering = mode === "register";
+  document.getElementById("emailLoginTab").classList.toggle("active", !registering);
+  document.getElementById("emailRegisterTab").classList.toggle("active", registering);
+  document.getElementById("emailNameField").style.display = registering ? "grid" : "none";
+  document.getElementById("emailConfirmField").style.display = registering ? "grid" : "none";
+  document.getElementById("emailPasswordConfirm").required = registering;
+  document.getElementById("emailPassword").autocomplete = registering ? "new-password" : "current-password";
+  document.getElementById("emailAuthButton").textContent = registering ? "Создать аккаунт →" : "Войти на сайт →";
+  document.getElementById("emailVerifyForm").style.display = "none";
+  document.getElementById("emailAuthForm").style.display = "grid";
+  document.getElementById("loginError").textContent = "";
+}
+document.getElementById("emailLoginTab").addEventListener("click", () => setEmailAuthMode("login"));
+document.getElementById("emailRegisterTab").addEventListener("click", () => setEmailAuthMode("register"));
+async function completeSiteLogin(payload) {
+  sessionToken = payload.access_token;
+  sessionStorage.setItem(TOKEN_KEY, sessionToken);
+  await initializeAuthenticatedSite();
+  hideLogin();
+  toast("Вход выполнен.");
+}
+document.getElementById("emailAuthForm").addEventListener("submit", async event => {
   event.preventDefault();
-  const button = document.getElementById("loginButton");
+  const button = document.getElementById("emailAuthButton");
   const error = document.getElementById("loginError");
+  const email = document.getElementById("emailAddress").value.trim().toLowerCase();
+  const password = document.getElementById("emailPassword").value;
+  const display_name = document.getElementById("emailDisplayName").value.trim();
   error.textContent = "";
-  if (!API_CONFIGURED) { error.textContent = "API ещё не подключён. Сначала настройте Web address в FadeHost, затем укажите его в API_BASE_URL."; return; }
-  button.disabled = true; button.textContent = "Проверяю код…";
+  if (!API_CONFIGURED) { error.textContent = "API ещё не подключён. Проверьте API_BASE_URL."; return; }
+  if (emailAuthMode === "register" && password !== document.getElementById("emailPasswordConfirm").value) {
+    error.textContent = "Пароли не совпадают."; return;
+  }
+  button.disabled = true;
+  button.textContent = emailAuthMode === "register" ? "Отправляю код…" : "Проверяю данные…";
   try {
-    const response = await fetch(API_BASE_URL + "/api/login", {
+    const endpoint = emailAuthMode === "register" ? "/api/auth/register" : "/api/auth/login";
+    const response = await fetch(API_BASE_URL + endpoint, {
       method: "POST", headers: {"Content-Type": "application/json"},
-      body: JSON.stringify({telegram_id: Number(document.getElementById("loginId").value), code: document.getElementById("loginCode").value.trim()})
+      body: JSON.stringify({email, password, display_name})
     });
     const payload = await response.json();
-    if (!response.ok) throw new Error(payload.detail || "Не удалось выполнить вход.");
-    sessionToken = payload.access_token;
-    sessionStorage.setItem(TOKEN_KEY, sessionToken);
-    document.getElementById("loginCode").value = "";
-    await initializeAuthenticatedSite();
-    hideLogin();
-    toast("Вход выполнен.");
+    if (!response.ok) throw new Error(payload.detail || "Не удалось выполнить запрос.");
+    if (emailAuthMode === "register") {
+      pendingVerificationEmail = email;
+      document.getElementById("emailAuthForm").style.display = "none";
+      document.getElementById("emailVerifyForm").style.display = "grid";
+      document.getElementById("loginError").textContent = "Код отправлен на " + email + ". Проверьте входящие и папку «Спам».";
+      document.getElementById("emailVerifyCode").focus();
+    } else {
+      await completeSiteLogin(payload);
+    }
   } catch (err) { error.textContent = err.message || "Не удалось подключиться к серверу."; }
-  finally { button.disabled = false; button.textContent = "Войти на сайт →"; }
+  finally { button.disabled = false; button.textContent = emailAuthMode === "register" ? "Создать аккаунт →" : "Войти на сайт →"; }
+});
+document.getElementById("emailVerifyForm").addEventListener("submit", async event => {
+  event.preventDefault();
+  const button = document.getElementById("emailVerifyButton");
+  const error = document.getElementById("loginError");
+  button.disabled = true; button.textContent = "Подтверждаю…"; error.textContent = "";
+  try {
+    const response = await fetch(API_BASE_URL + "/api/auth/verify", {
+      method: "POST", headers: {"Content-Type": "application/json"},
+      body: JSON.stringify({email: pendingVerificationEmail, code: document.getElementById("emailVerifyCode").value.trim()})
+    });
+    const payload = await response.json();
+    if (!response.ok) throw new Error(payload.detail || "Не удалось подтвердить Gmail.");
+    await completeSiteLogin(payload);
+  } catch (err) { error.textContent = err.message || "Не удалось подтвердить Gmail."; }
+  finally { button.disabled = false; button.textContent = "Подтвердить Gmail →"; }
+});
+document.getElementById("emailResendButton").addEventListener("click", async () => {
+  const error = document.getElementById("loginError");
+  const button = document.getElementById("emailResendButton");
+  button.disabled = true; error.textContent = "";
+  try {
+    const response = await fetch(API_BASE_URL + "/api/auth/resend", {
+      method: "POST", headers: {"Content-Type": "application/json"},
+      body: JSON.stringify({email: pendingVerificationEmail, password: document.getElementById("emailPassword").value, display_name: document.getElementById("emailDisplayName").value.trim()})
+    });
+    const payload = await response.json();
+    if (!response.ok) throw new Error(payload.detail || "Не удалось отправить новый код.");
+    error.textContent = "Новый код отправлен. Проверьте Gmail.";
+  } catch (err) { error.textContent = err.message; }
+  finally { button.disabled = false; }
 });
 async function initializeAuthenticatedSite() {
   const response = await apiFetch("/api/me");
   currentUser = await response.json();
   document.body.classList.add("authenticated");
-  document.querySelector(".user-name").textContent = currentUser.is_owner ? "Владелец" : "Пользователь";
-  document.querySelector(".user-role").textContent = "Telegram ID: " + currentUser.telegram_id;
-  document.querySelector(".avatar").textContent = currentUser.is_owner ? "ВК" : String(currentUser.telegram_id).slice(-2);
+  document.querySelector(".user-name").textContent = currentUser.is_owner ? "Владелец" : (currentUser.display_name || "Пользователь");
+  document.querySelector(".user-role").textContent = currentUser.email || ("Telegram ID: " + currentUser.telegram_id);
+  document.querySelector(".avatar").textContent = currentUser.is_owner ? "ВК" : (currentUser.email ? currentUser.email.slice(0, 2).toUpperCase() : String(currentUser.telegram_id).slice(-2));
   const ownerNav = document.querySelector('[data-page="owner"]');
   if (ownerNav) ownerNav.style.display = currentUser.is_owner ? "flex" : "none";
   const serviceValue = document.querySelector(".stats .stat:nth-child(4) .stat-value");
@@ -911,7 +998,7 @@ async function initializeAuthenticatedSite() {
   const sidebarTitle = document.querySelector(".sidebar-bottom strong");
   const sidebarText = document.querySelector(".sidebar-bottom p");
   if (sidebarTitle) sidebarTitle.textContent = "Подключено";
-  if (sidebarText) sidebarText.textContent = "Вы вошли через Telegram. Доступ и данные проверяются сервером.";
+  if (sidebarText) sidebarText.textContent = "Вы вошли через подтверждённый аккаунт. Доступ и данные проверяются сервером.";
   const ownerBadge = document.querySelector("#page-owner .page-head .badge");
   if (ownerBadge) ownerBadge.textContent = "Рабочие данные";
   if (ownerBadge) ownerBadge.classList.remove("warn");
@@ -926,7 +1013,7 @@ async function restoreSession() {
     showLogin(""); return;
   }
   if (!sessionToken) { showLogin(""); return; }
-  try { await initializeAuthenticatedSite(); } catch (err) { showLogin(err.message || "Войдите через Telegram."); }
+  try { await initializeAuthenticatedSite(); } catch (err) { showLogin(err.message || "Войдите снова по Gmail."); }
 }
 function createCell(row, text) { const cell = document.createElement("td"); cell.textContent = text == null ? "" : String(text); row.appendChild(cell); return cell; }
 async function downloadHistoryItem(item) {
@@ -1064,8 +1151,24 @@ async function loadOwnerDashboard() {
     document.getElementById("ownerDocs").textContent = overview.created_docs ?? 0;
     document.getElementById("ownerErrorsCount").textContent = overview.errors ?? errors.length;
     const userRows = document.getElementById("ownerUsersRows"); userRows.replaceChildren();
-    if (!users.length) { const tr=document.createElement("tr"); const td=createCell(tr,"Пока нет пользователей с выданным доступом."); td.colSpan=4; userRows.appendChild(tr); }
-    users.forEach(item => { const tr=document.createElement("tr"); createCell(tr,"Пользователь"); createCell(tr,item.telegram_id); createCell(tr,"Обычный пользователь"); const td=createCell(tr,""); td.innerHTML='<span class="badge">Разрешён</span>'; userRows.appendChild(tr); });
+    if (!users.length) { const tr=document.createElement("tr"); const td=createCell(tr,"Пока нет зарегистрированных пользователей."); td.colSpan=5; userRows.appendChild(tr); }
+    users.forEach(item => {
+      const tr=document.createElement("tr");
+      createCell(tr, item.display_name || (item.type === "email" ? "Пользователь сайта" : "Telegram-пользователь"));
+      createCell(tr, item.email || item.telegram_id);
+      createCell(tr, item.role === "owner" ? "Владелец" : "Пользователь");
+      const statusCell=createCell(tr,"");
+      const status=document.createElement("span"); status.className="badge" + (item.access === "blocked" ? " warn" : ""); status.textContent=item.access === "blocked" ? "Заблокирован" : "Активен"; statusCell.appendChild(status);
+      const actionCell=createCell(tr,"");
+      if (item.type === "email" && item.role !== "owner") {
+        const action=document.createElement("button"); action.type="button"; action.className="btn small " + (item.access === "blocked" ? "secondary" : "danger");
+        action.textContent=item.access === "blocked" ? "Разблокировать" : "Заблокировать";
+        action.addEventListener("click", () => changeEmailAccess(item.email, item.access === "blocked" ? "unblock" : "block"));
+        actionCell.appendChild(action);
+      } else if (item.type === "telegram") { actionCell.textContent="Управление через Telegram"; }
+      else { actionCell.textContent="Полный доступ"; }
+      userRows.appendChild(tr);
+    });
     renderOwnerActivity("ownerErrorsList", errors, "Ошибок пока нет.", true);
     renderOwnerActivity("ownerReportsList", reports, "Сообщений пока нет.", false);
   } catch (err) { modal("Не удалось загрузить кабинет", err.message); }
@@ -1079,6 +1182,14 @@ function renderOwnerActivity(targetId, items, emptyText, isError) {
     const details=document.createElement("div"); const strong=document.createElement("strong"); strong.textContent=isError?(item.event || "Ошибка"):(item.kind || "Сообщение пользователя"); details.appendChild(strong);
     const span=document.createElement("span"); span.textContent=(item.time || "") + " · " + (item.error || item.message || ""); details.appendChild(span); row.appendChild(details); box.appendChild(row);
   }
+}
+async function changeEmailAccess(email, action) {
+  try {
+    const response = await apiFetch("/api/owner/email-users/" + action, {method:"POST", body:JSON.stringify({email})});
+    const payload = await response.json();
+    modal(action === "block" ? "Пользователь заблокирован" : "Доступ восстановлен", `${payload.email}: ${payload.access}. ${action === "block" ? "Активные сессии отозваны." : "Пользователь сможет войти снова."}`);
+    await loadOwnerDashboard();
+  } catch (err) { modal("Не удалось изменить доступ", err.message); }
 }
 async function accessAction(action) {
   const idValue = document.getElementById("ownerId").value.trim();
