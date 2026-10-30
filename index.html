@@ -281,6 +281,422 @@ aside { background: linear-gradient(165deg,#071612,#0c211c 60%,#142d23); border-
   main { background-attachment:scroll; }
 }
 
+
+/* ===== AI DESIGN SYSTEM: Midnight / Electric Blue / Violet ===== */
+:root {
+  --site-primary: #111b39;
+  --site-on-primary: #f4f7ff;
+  --site-secondary: #1a2a50;
+  --site-on-secondary: #e3efff;
+  --site-background: #070b18;
+  --site-on-background: #edf3ff;
+  --surface: rgba(14, 23, 47, .90);
+  --muted: #9aaaca;
+  --line: rgba(137, 166, 228, .19);
+  --soft: rgba(24, 38, 76, .78);
+  --accent: #67e1ff;
+  --accent-soft: rgba(91, 143, 255, .16);
+  --warning: #ffca83;
+  --warning-bg: rgba(255, 183, 90, .12);
+  --danger: #ff7e9f;
+  --shadow: 0 18px 55px rgba(0, 0, 0, .30);
+}
+html { color-scheme: dark; }
+body, #app {
+  background: #070b18;
+  color: #edf3ff;
+}
+.layout { background: transparent; }
+aside {
+  background: linear-gradient(165deg, #080e20 0%, #101b39 52%, #17244a 100%);
+  border-right: 1px solid rgba(113, 147, 227, .20);
+  box-shadow: 12px 0 45px rgba(0, 0, 0, .16);
+}
+aside::after {
+  border-color: rgba(99, 220, 255, .10);
+  box-shadow: 0 0 0 28px rgba(130, 110, 255, .035), 0 0 0 58px rgba(99, 220, 255, .025);
+}
+.brand-mark, .auth-mark {
+  border: 1px solid rgba(111, 222, 255, .42);
+  background: linear-gradient(145deg, #183c68, #30336f);
+  color: #8ceaff;
+  box-shadow: 0 0 24px rgba(82, 190, 255, .18), inset 0 0 18px rgba(128, 112, 255, .15);
+}
+.brand-title { letter-spacing: .08em; }
+.brand-sub, .sidebar-bottom p { color: #aab8d8; }
+.nav-label { color: #7f91b7; }
+.nav button {
+  color: #c1cde8;
+  border: 1px solid transparent;
+}
+.nav button.active {
+  color: #061326;
+  background: linear-gradient(105deg, #69e4ff, #a6a1ff);
+  box-shadow: 0 6px 24px rgba(87, 194, 255, .22);
+}
+.nav button:hover:not(.active) {
+  background: rgba(112, 143, 220, .13);
+  border-color: rgba(112, 190, 255, .14);
+}
+.nav-icon { color: #71dfff; }
+.nav button.active .nav-icon { color: #10213e; }
+.sidebar-bottom {
+  background: rgba(105, 144, 230, .08);
+  border-color: rgba(120, 168, 255, .18);
+  backdrop-filter: blur(12px);
+}
+main {
+  position: relative;
+  min-width: 0;
+  background:
+    radial-gradient(ellipse at 78% 3%, rgba(60, 100, 220, .22), transparent 35%),
+    radial-gradient(ellipse at 45% 80%, rgba(91, 64, 185, .15), transparent 38%),
+    linear-gradient(135deg, rgba(5, 10, 24, .93), rgba(8, 15, 34, .91)),
+    url('https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=85&w=1800') center / cover fixed;
+}
+.topbar {
+  position: sticky;
+  top: 0;
+  z-index: 4;
+  background: rgba(8, 14, 31, .80);
+  border-bottom: 1px solid rgba(125, 157, 225, .16);
+  backdrop-filter: blur(20px);
+  color: #edf3ff;
+}
+.breadcrumb, .user-role, .lead, .panel-sub, .stat-top, .stat-note, .hint {
+  color: #9aa9c7;
+}
+.avatar {
+  color: #0b1730;
+  background: linear-gradient(135deg, #6ce5ff, #ac9cff);
+}
+.page { max-width: 1600px; }
+h1, h2, .stat-value, .activity strong, .result-title { color: #f3f6ff; }
+.eyebrow { color: #69dcff; }
+.btn {
+  color: #071529;
+  background: linear-gradient(105deg, #61e3ff, #a79bff);
+  border-color: rgba(160, 211, 255, .30);
+  box-shadow: 0 7px 24px rgba(78, 174, 255, .20);
+}
+.btn:hover { box-shadow: 0 10px 30px rgba(78, 174, 255, .29); }
+.btn.secondary, .btn.soft {
+  color: #dfe9ff;
+  background: rgba(32, 48, 88, .76);
+  border: 1px solid rgba(126, 167, 255, .25);
+  box-shadow: none;
+}
+.btn.danger {
+  color: #fff;
+  background: linear-gradient(105deg, #b44772, #8e4ba9);
+}
+.card, .modal {
+  background: linear-gradient(145deg, rgba(20, 31, 61, .92), rgba(11, 19, 41, .95));
+  border-color: rgba(127, 161, 231, .20);
+  box-shadow: 0 15px 42px rgba(0, 0, 0, .20), inset 0 1px 0 rgba(255, 255, 255, .035);
+  backdrop-filter: blur(18px);
+}
+.stat { position: relative; overflow: hidden; }
+.stat::after {
+  content: "";
+  position: absolute;
+  width: 110px; height: 110px;
+  right: -54px; bottom: -68px;
+  border-radius: 50%;
+  border: 1px solid rgba(103, 216, 255, .22);
+  box-shadow: 0 0 0 14px rgba(116, 125, 255, .045), 0 0 35px rgba(94, 183, 255, .12);
+  pointer-events: none;
+}
+.stat-icon, .activity-mark {
+  color: #7be5ff;
+  background: rgba(72, 120, 210, .16);
+  border: 1px solid rgba(105, 202, 255, .20);
+}
+.panel { background: linear-gradient(145deg, rgba(17, 28, 55, .93), rgba(11, 19, 41, .95)); }
+.quick {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  color: #f0f5ff;
+  border-color: rgba(120, 164, 242, .18);
+  background-position: center;
+  background-size: cover;
+  transition: transform .16s, border-color .16s, box-shadow .16s;
+}
+.quick::before {
+  background: linear-gradient(0deg, rgba(7, 13, 30, .96), rgba(12, 24, 52, .72) 55%, rgba(17, 29, 59, .25));
+}
+.quick strong { color: #f4f7ff; }
+.quick span { color: #c0cce5; }
+.quick-icon {
+  background: linear-gradient(140deg, rgba(77, 201, 255, .20), rgba(135, 111, 255, .22));
+  color: #8aeaff;
+  border: 1px solid rgba(116, 205, 255, .30);
+  box-shadow: 0 0 20px rgba(81, 177, 255, .10);
+}
+.quick:hover {
+  border-color: rgba(102, 225, 255, .62);
+  background-color: #15254b;
+  box-shadow: 0 10px 28px rgba(50, 120, 255, .14);
+  transform: translateY(-2px);
+}
+.activity-item { border-color: rgba(130, 160, 220, .14); }
+.notice {
+  color: #f5ce91;
+  background: rgba(255, 177, 91, .09);
+  border: 1px solid rgba(255, 190, 111, .16);
+}
+input, select, textarea {
+  color: #f3f6ff;
+  background: rgba(7, 14, 32, .82);
+  border-color: rgba(128, 163, 231, .24);
+}
+input:focus, select:focus, textarea:focus {
+  border-color: #68dcff;
+  box-shadow: 0 0 0 3px rgba(89, 206, 255, .13);
+}
+input::placeholder, textarea::placeholder { color: #7586a8; }
+label { color: #dce7ff; }
+th {
+  color: #9aaaca;
+  background: rgba(79, 107, 176, .12);
+}
+th, td { border-color: rgba(128, 163, 231, .14); }
+.badge {
+  color: #87e7ff;
+  background: rgba(69, 185, 226, .13);
+  border: 1px solid rgba(101, 213, 255, .20);
+}
+.badge.warn {
+  color: #ffd18c;
+  background: rgba(255, 184, 93, .10);
+  border-color: rgba(255, 184, 93, .20);
+}
+.tab {
+  color: #aebddd;
+  background: rgba(15, 26, 53, .80);
+  border-color: rgba(124, 160, 229, .20);
+}
+.tab.active {
+  color: #08162b;
+  background: linear-gradient(105deg, #65e1ff, #a99cff);
+  border-color: transparent;
+}
+.result { border-color: rgba(128, 163, 231, .14); }
+.result p, .modal p { color: #aab9d6; }
+.footer-note { color: #7f91b2; }
+.toast {
+  color: #061326;
+  background: linear-gradient(105deg, #64e1ff, #a99cff);
+  box-shadow: 0 10px 30px rgba(67, 161, 255, .25);
+}
+.modal-back {
+  background: rgba(1, 5, 16, .72);
+  backdrop-filter: blur(8px);
+}
+.auth-gate {
+  background:
+    radial-gradient(ellipse at 12% 12%, rgba(63, 152, 255, .20), transparent 36%),
+    radial-gradient(ellipse at 90% 90%, rgba(139, 85, 255, .19), transparent 39%),
+    linear-gradient(135deg, #060b1a, #0b1430 58%, #111333);
+}
+.auth-gate::before {
+  background:
+    linear-gradient(120deg, rgba(5, 12, 31, .92), rgba(15, 29, 68, .66) 55%, rgba(34, 22, 80, .38)),
+    url('https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=85&w=1700') center / cover;
+  border: 1px solid rgba(112, 195, 255, .25);
+  box-shadow: 0 30px 90px rgba(0, 0, 0, .34), inset 0 0 65px rgba(76, 143, 255, .10);
+}
+.auth-gate::after {
+  border-color: rgba(102, 221, 255, .22);
+  box-shadow: 0 0 0 22px rgba(124, 116, 255, .06), 0 0 0 50px rgba(72, 187, 255, .035);
+}
+.auth-box {
+  background: rgba(9, 17, 39, .88);
+  border: 1px solid rgba(126, 182, 255, .27);
+  box-shadow: 0 28px 85px rgba(0, 0, 0, .42), inset 0 1px 0 rgba(255, 255, 255, .06);
+  backdrop-filter: blur(24px);
+}
+.auth-box .brand-title { color: #f4f7ff !important; }
+.auth-box .user-role, .auth-box .panel-sub, .auth-box .lead { color: #aab9d8; }
+.auth-box label { color: #dce8ff; }
+.auth-box input {
+  background: rgba(5, 12, 29, .84);
+  border-color: rgba(123, 169, 245, .28);
+  color: #fff;
+}
+.auth-box input:focus {
+  border-color: #65e0ff;
+  box-shadow: 0 0 0 3px rgba(90, 206, 255, .14);
+}
+.auth-box .btn { background: linear-gradient(105deg, #65e1ff, #a99cff); color: #071629; }
+.auth-note {
+  color: #a8d8ed;
+  background: rgba(65, 156, 220, .10);
+  border: 1px solid rgba(90, 192, 255, .20);
+}
+.ai-feature {
+  position: relative;
+  isolation: isolate;
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(230px, .85fr);
+  min-height: 205px;
+  overflow: hidden;
+  border: 1px solid rgba(108, 204, 255, .26);
+  background:
+    radial-gradient(ellipse at 84% 50%, rgba(98, 104, 255, .32), transparent 38%),
+    linear-gradient(115deg, #101e42, #18265a 55%, #29235d);
+  box-shadow: 0 18px 50px rgba(25, 75, 172, .16), inset 0 1px 0 rgba(255, 255, 255, .05);
+}
+.ai-feature::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  right: 15%; top: -120px;
+  width: 360px; height: 360px;
+  border-radius: 50%;
+  border: 1px solid rgba(102, 223, 255, .20);
+  box-shadow: 0 0 0 25px rgba(100, 133, 255, .045), 0 0 0 55px rgba(100, 133, 255, .035), inset 0 0 60px rgba(95, 205, 255, .12);
+  animation: aiGlow 7s ease-in-out infinite;
+}
+.ai-copy { padding: 28px; }
+.ai-kicker { color: #77e5ff; }
+.ai-copy h2 { color: #fff; font-size: 23px; }
+.ai-copy p { color: #c0cbea; line-height: 1.75; }
+.ai-status {
+  color: #9feeff;
+  border-color: rgba(110, 221, 255, .28);
+  background: rgba(67, 174, 240, .10);
+}
+.ai-visual {
+  min-height: 205px;
+  background:
+    linear-gradient(90deg, #152452 0%, rgba(23, 35, 86, .22) 42%, rgba(31, 26, 78, .15)),
+    url('https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=90&w=1000') center / cover;
+}
+.ai-visual::after {
+  content: "✦  AI CORE";
+  color: #a4efff;
+  background: rgba(7, 17, 43, .70);
+  border-color: rgba(106, 218, 255, .55);
+  box-shadow: 0 0 28px rgba(75, 186, 255, .17);
+}
+#page-home .page-head {
+  background:
+    linear-gradient(100deg, rgba(7, 14, 34, .94), rgba(19, 31, 75, .78) 56%, rgba(39, 29, 94, .38)),
+    url('https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=90&w=1500') center / cover;
+  border: 1px solid rgba(107, 193, 255, .30);
+  box-shadow: 0 20px 54px rgba(24, 73, 159, .15);
+}
+#page-home .page-head .eyebrow { color: #75e5ff; }
+#page-home .page-head h1 { text-shadow: 0 0 30px rgba(91, 186, 255, .23); }
+#page-home .page-head .btn { color: #081629; background: linear-gradient(105deg, #65e1ff, #a99cff); }
+#page-home .stats .card { border-color: rgba(109, 172, 242, .20); }
+@keyframes aiGlow {
+  0%, 100% { opacity: .58; transform: scale(.97); }
+  50% { opacity: 1; transform: scale(1.04); }
+}
+@media (max-width: 900px) {
+  .ai-feature { grid-template-columns: 1fr; }
+  .ai-visual { min-height: 145px; }
+}
+@media (max-width: 850px) {
+  main { background-attachment: scroll; }
+  .login-overlay { display: flex; justify-content: center; padding: 16px; }
+  .login-overlay::before { display: none; }
+  .login-card { margin: auto; }
+}
+@media (max-width: 680px) {
+  aside { background: linear-gradient(90deg, #080e20, #101b39); }
+  .topbar { position: static; }
+  .page { padding-top: 22px; }
+  .auth-box { padding: 23px; }
+}
+
+
+/* AI treatment for the actual Telegram login overlay in this site file. */
+.login-overlay {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(360px, 480px);
+  align-items: center;
+  gap: clamp(24px, 4vw, 68px);
+  padding: clamp(18px, 4vw, 56px);
+  background:
+    radial-gradient(ellipse at 12% 12%, rgba(63, 152, 255, .20), transparent 36%),
+    radial-gradient(ellipse at 90% 90%, rgba(139, 85, 255, .19), transparent 39%),
+    linear-gradient(115deg, rgba(4, 10, 27, .94), rgba(8, 17, 42, .90)),
+    url('https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=90&w=1800') center / cover fixed;
+}
+.login-overlay::before {
+  content: "ВОЕННЫЙ\\AКОНСПЕКТ\\A\\AAI-ПОМОЩНИК ДЛЯ УЧЕБНЫХ ДОКУМЕНТОВ\\A\\AКонспекты · Учебники · Умный поиск";
+  white-space: pre-line;
+  display: flex;
+  align-items: flex-end;
+  min-height: min(66vh, 600px);
+  padding: clamp(25px, 4vw, 52px);
+  border-radius: 24px;
+  border: 1px solid rgba(112, 195, 255, .25);
+  background:
+    linear-gradient(120deg, rgba(5, 12, 31, .92), rgba(15, 29, 68, .66) 55%, rgba(34, 22, 80, .38)),
+    url('https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=90&w=1500') center / cover;
+  color: #f4f7ff;
+  font-size: clamp(27px, 4vw, 56px);
+  font-weight: 800;
+  letter-spacing: -.045em;
+  line-height: 1.1;
+  text-shadow: 0 3px 25px rgba(0, 0, 0, .4);
+  box-shadow: 0 22px 60px rgba(0, 0, 0, .32), inset 0 0 50px rgba(91, 155, 255, .10);
+}
+.login-card {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 480px;
+  background: rgba(9, 17, 39, .90);
+  color: #f4f7ff;
+  border: 1px solid rgba(126, 182, 255, .27);
+  box-shadow: 0 28px 85px rgba(0, 0, 0, .42), inset 0 1px 0 rgba(255, 255, 255, .06);
+  backdrop-filter: blur(24px);
+}
+.login-brand-mark {
+  background: linear-gradient(145deg, #183c68, #30336f);
+  color: #8ceaff;
+  border: 1px solid rgba(111, 222, 255, .42);
+  box-shadow: 0 0 24px rgba(82, 190, 255, .18);
+}
+.login-card .brand-title,
+.login-card h1,
+.login-card label { color: #f4f7ff !important; }
+.login-card p,
+.login-card .brand-sub { color: #aab9d8 !important; }
+.login-card input {
+  background: rgba(5, 12, 29, .88);
+  color: #fff;
+  border-color: rgba(123, 169, 245, .28);
+}
+.login-card input::placeholder { color: #7586a8; }
+.login-card input:focus {
+  border-color: #65e0ff;
+  box-shadow: 0 0 0 3px rgba(90, 206, 255, .14);
+}
+.login-card .btn {
+  width: 100%;
+  background: linear-gradient(105deg, #65e1ff, #a99cff);
+  color: #071629;
+}
+.login-photo-strip { gap: 9px; }
+.login-photo {
+  border: 1px solid rgba(112, 195, 255, .22);
+  box-shadow: 0 8px 22px rgba(0, 0, 0, .22);
+}
+.login-error { color: #ff8aa5 !important; }
+.owner-action-note { color: #9fb3d8; }
+@media (max-width: 850px) {
+  .login-overlay { display: flex; justify-content: center; padding: 16px; }
+  .login-overlay::before { display: none; }
+  .login-card { margin: auto; }
+}
+
 </style>
 </head>
 <body>
